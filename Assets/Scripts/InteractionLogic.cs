@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class InteractionLogic : MonoBehaviour
 {
     PlayerInput input;
+    GameObject selectedObject;
     IInteractable selected;
     int regularLay;
     int highlightLay;
@@ -19,21 +20,30 @@ public class InteractionLogic : MonoBehaviour
 
     private void Start()
     {
-        
+        input.actions["Interact"].started += _ => Interact();
+    }
+
+    void Interact()
+    {
+        if (selected != null)
+            selected.OnInteract();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if(selected == null && other.TryGetComponent(out selected))
         {
+            selected.OnSelect();
+            selectedObject = other.gameObject;
             ChangeLayer(other.gameObject, highlightLay);
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject == selected.gameObject)
+        if (other.gameObject == selectedObject)
         {
+            selected.OnDeselect();
             selected = null;
             ChangeLayer(other.gameObject, regularLay);
         }
