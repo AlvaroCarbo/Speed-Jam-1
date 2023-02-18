@@ -7,11 +7,7 @@ namespace Damage
     {
         private void OnTriggerEnter(Collider other)
         {
-            var damageable = other.GetComponent<Damageable>();
-            if (damageable != null)
-            {
-                damageable.TakeDamage();
-            }
+            Debug.Log("Triggered");
         }
     }
 }

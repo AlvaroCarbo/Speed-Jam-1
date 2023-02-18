@@ -3,6 +3,6 @@ namespace Damage.Interface
 {
     public interface IDamageable
     {
-        void TakeDamage();
+        int DoDamage();
     }
 }

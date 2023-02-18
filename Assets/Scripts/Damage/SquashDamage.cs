@@ -1,13 +1,26 @@
-﻿using Damage.Base;
+﻿using System;
+using Damage.Base;
 using UnityEngine;
 
 namespace Damage
 {
     public class SquashDamage : Damageable
     {
-        public override void TakeDamage()
+        public override int DoDamage()
         {
             Debug.Log("Squash Damage" + damage);
+            return damage;
+        }
+
+        public override void PlayDamageSound()
+        {
+            AudioManager.Instance.PlaySound(damageSound);
+        }
+
+        public override void PlayDamageParticles(Transform playerTransform)
+        {
+            ParticlesManager.Instance.SpawnParticles(damageParticles, playerTransform.position + particlesOffset,
+                playerTransform.rotation, durationFX, particlesScale);
         }
     }
 }

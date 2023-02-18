@@ -30,7 +30,7 @@ PrefabInstance:
     - target: {fileID: 596884714298006000, guid: 50164fc8f61ae064e8115c83b8b940c6,
         type: 3}
       propertyPath: m_Name
-      value: Player
+      value: Player Variant
       objectReference: {fileID: 0}
     - target: {fileID: 596884714298006001, guid: 50164fc8f61ae064e8115c83b8b940c6,
         type: 3}
@@ -135,15 +135,3 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1856754910
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8198791910145397662}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4d48dee61d9e3743b00b6e3814f9c59, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
