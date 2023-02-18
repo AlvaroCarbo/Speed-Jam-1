@@ -24,6 +24,7 @@ public class Movement3D : MonoBehaviour, IMovement3D
 
     // Exposed variables via interface
     public bool jumpedThisFrame { get; private set; }
+    public bool landedThisFrame { get; private set; }
     public Vector3 velocity { get; private set; }
 
     CharacterController controller;
@@ -54,7 +55,7 @@ public class Movement3D : MonoBehaviour, IMovement3D
         input.actions["Move"].performed += it => moveInput = it.ReadValue<Vector2>();
         input.actions["Move"].canceled += _ => { isMoving = false; currentMoveSpeed = Vector2.zero; };
 
-        input.actions["Jump"].started += _ => jumpedThisFrame = CheckJump();
+        input.actions["Jump"].started += _ => CheckJump();
 
         input.actions["Sprint"].started += _ => moveSpeed = sprintSpeed;
         input.actions["Sprint"].canceled += _ => moveSpeed = regularSpeed;
@@ -62,21 +63,36 @@ public class Movement3D : MonoBehaviour, IMovement3D
 
     void Update()
     {
+        // JUMP
+        if (isJumping)
+        {
+            jumpedThisFrame = false;
+        }
+        
         if (jumpedThisFrame)
         {
             currentFallSpeed = Mathf.Sqrt(jumpHeight * -2 * gravity);
-            jumpedThisFrame = false;
+            isJumping = true;
         }
         else if(controller.isGrounded)
         {
             currentFallSpeed = -2;
-            isJumping = false;
+            if (isJumping)
+            {
+                isJumping = false;
+                landedThisFrame = true;
+            } 
+            else if (landedThisFrame)
+            {
+                landedThisFrame = false;
+            }
         }
         else
         {
             currentFallSpeed = currentFallSpeed + gravity * Time.deltaTime;
         }
 
+        // MOVEMENT
         if (isMoving)
         {
             currentMoveSpeed = InputToMoveSpeed(moveInput, cameraTransform);
@@ -105,15 +121,12 @@ public class Movement3D : MonoBehaviour, IMovement3D
     }
 
     // Check if we can jump this frame
-    bool CheckJump()
+    void CheckJump()
     {
-        bool jumpedThisFrame = false;
         if (!isJumping && controller.isGrounded)
         {
-            isJumping = true;
             jumpedThisFrame = true;
         }
-        return jumpedThisFrame;
     }
 
     void RotateTowards(Transform lookTransform)

@@ -6,4 +6,5 @@ public interface IMovement3D
 {
     Vector3 velocity { get; }
     bool jumpedThisFrame { get; }
+    bool landedThisFrame { get; }
 }
