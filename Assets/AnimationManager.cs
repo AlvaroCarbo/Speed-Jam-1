@@ -18,5 +18,10 @@ public class AnimationManager : MonoBehaviour
     {
         float speed = new Vector2(movementInterface.velocity.x, movementInterface.velocity.z).magnitude;
         animator.SetFloat("Speed", speed);
+
+        if (movementInterface.jumpedThisFrame)
+            animator.SetTrigger("Jumped");
+        if (movementInterface.landedThisFrame)
+            animator.SetTrigger("Landed");
     }
 }
