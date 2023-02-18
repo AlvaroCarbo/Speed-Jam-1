@@ -23,7 +23,7 @@ public class MenuController : MonoBehaviour
     }
     public void ScoreBoardLoader()
     {
-        SceneManager.LoadScene("Scoreboard", LoadSceneMode.Single);
+        SceneManager.LoadScene("LeaderboardScene", LoadSceneMode.Single);
     }
     public void OptionsLoader()
     {
