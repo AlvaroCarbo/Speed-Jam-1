@@ -20,9 +20,8 @@ public class Movement3D : MonoBehaviour, IMovement3D
     Vector2 moveInput;
 
     bool isMoving;
-    bool isJumping;
-
     // Exposed variables via interface
+    public bool isJumping { get; private set; }
     public bool jumpedThisFrame { get; private set; }
     public bool landedThisFrame { get; private set; }
     public Vector3 velocity { get; private set; }
