@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Movement3D : MonoBehaviour
+public class Movement3D : MonoBehaviour, IMovement3D
 {
     [Header("MOVEMENT")]
     [SerializeField] float regularSpeed;
     [SerializeField] float sprintSpeed;
+    [SerializeField] float rotationSpeed;
     float moveSpeed;
     [Header("JUMPING")]
     [SerializeField] float gravity;
@@ -19,8 +20,11 @@ public class Movement3D : MonoBehaviour
     Vector2 moveInput;
 
     bool isMoving;
-    bool jumpedThisFrame;
     bool isJumping;
+
+    // Exposed variables via interface
+    public bool jumpedThisFrame { get; private set; }
+    public Vector3 velocity { get; private set; }
 
     CharacterController controller;
     PlayerInput input;
@@ -76,8 +80,10 @@ public class Movement3D : MonoBehaviour
         if (isMoving)
         {
             currentMoveSpeed = InputToMoveSpeed(moveInput, cameraTransform);
+            RotateTowards(cameraTransform);
         }
 
+        velocity = controller.velocity;
         controller.Move(new Vector3(currentMoveSpeed.x, currentFallSpeed, currentMoveSpeed.y) * Time.deltaTime);
     }
 
@@ -108,5 +114,11 @@ public class Movement3D : MonoBehaviour
             jumpedThisFrame = true;
         }
         return jumpedThisFrame;
+    }
+
+    void RotateTowards(Transform lookTransform)
+    {
+        Quaternion targetRotation = Quaternion.Euler(0, lookTransform.eulerAngles.y, 0);
+        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
     }
 }
