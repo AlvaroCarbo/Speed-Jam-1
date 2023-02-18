@@ -95,7 +95,7 @@ public class Movement3D : MonoBehaviour, IMovement3D
         if (isMoving)
         {
             currentMoveSpeed = InputToMoveSpeed(moveInput, cameraTransform);
-            RotateTowards(cameraTransform);
+            RotateTowards(new Vector3(currentMoveSpeed.x, 0, currentMoveSpeed.y));
         }
 
         velocity = controller.velocity;
@@ -128,9 +128,9 @@ public class Movement3D : MonoBehaviour, IMovement3D
         }
     }
 
-    void RotateTowards(Transform lookTransform)
+    void RotateTowards(Vector3 lookDirection)
     {
-        Quaternion targetRotation = Quaternion.Euler(0, lookTransform.eulerAngles.y, 0);
+        Quaternion targetRotation = Quaternion.LookRotation(lookDirection, transform.up);
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
     }
 }

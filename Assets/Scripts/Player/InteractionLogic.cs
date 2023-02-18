@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class InteractionLogic : MonoBehaviour
+public class InteractionLogic : MonoBehaviour, IInteractonLogic
 {
     PlayerInput input;
     GameObject selectedObject;
     IInteractable selected;
     int regularLay;
     int highlightLay;
+    
+    public bool isInteracting { get; set; }
 
     private void Awake()
     {
@@ -25,8 +27,12 @@ public class InteractionLogic : MonoBehaviour
 
     void Interact()
     {
-        if (selected != null)
-            selected.OnInteract();
+        if (!isInteracting)
+        {
+            isInteracting = true;
+            if (selected != null)
+                selected.OnInteract();
+        }
     }
 
     private void OnTriggerEnter(Collider other)
