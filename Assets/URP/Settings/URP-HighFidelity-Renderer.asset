@@ -146,7 +146,7 @@ MonoBehaviour:
     outlineScale: 1
     depthThreshold: 1.5
     robertsCrossMultiplier: 100
-    normalThreshold: 0.2
+    normalThreshold: 1
     steepAngleThreshold: 0.2
     steepAngleMultiplier: 25
   viewSpaceNormalsTextureSettings:
