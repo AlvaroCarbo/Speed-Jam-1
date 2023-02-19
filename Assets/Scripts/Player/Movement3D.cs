@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Player;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -84,6 +86,8 @@ public class Movement3D : MonoBehaviour, IMovement3D
             else if (landedThisFrame)
             {
                 landedThisFrame = false;
+                PlayerFXManager.Instance.PlayLandFX();
+                PlayerAudioManager.Instance.PlayLand();
             }
         }
         else
@@ -132,5 +136,15 @@ public class Movement3D : MonoBehaviour, IMovement3D
     {
         Quaternion targetRotation = Quaternion.LookRotation(lookDirection, transform.up);
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+    }
+    
+    public void EnableMovement(bool enable)
+    {
+        input.enabled = enable;
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        Debug.Log(other.gameObject.name);
     }
 }

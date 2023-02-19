@@ -4,11 +4,25 @@ using UnityEngine;
 
 public class PlayerFXManager : MonoBehaviour
 {
+    public static PlayerFXManager Instance;
+    
     [Header("FX")]
     [SerializeField] public ParticleSystem moveFX;
     [SerializeField] public ParticleSystem jumpFX;
     [SerializeField] public ParticleSystem landFX;
     [SerializeField] public ParticleSystem landFX2;
+    
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     public void PlayMoveFX()
     {

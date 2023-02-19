@@ -29,7 +29,7 @@ namespace Player
             
             _animationManager.SetDamageAnimation();
             
-            _movement3D.enabled = false;
+            _movement3D.EnableMovement(false);
 
             if (health <= 0)
             {
@@ -43,7 +43,7 @@ namespace Player
         IEnumerator DisableMovement()
         {
             yield return new WaitForSeconds(1f);
-            _movement3D.enabled = true;
+            _movement3D.EnableMovement(true);
         }
 
         private void Die()

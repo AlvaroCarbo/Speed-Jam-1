@@ -6,7 +6,7 @@ namespace Damage
     public class MoveSquash : MonoBehaviour
     {
         public float speed = 10f;
-        public float maxYPosition = 5f;
+        [SerializeField] private float maxYPosition = 5f;
 
         private bool _goingDown = true;
         
@@ -16,8 +16,12 @@ namespace Damage
         
         [Header("Audio")]
         [SerializeField] private AudioClip _groundCollisionSFX;
+        
+        private void Start()
+        {
+            maxYPosition = transform.position.y;
+        }
 
-        // Update is called once per frame
         void Update()
         {
             var position = transform.position;
@@ -50,6 +54,29 @@ namespace Damage
                 AudioSource.PlayClipAtPoint(_groundCollisionSFX, position);
                 _goingDown = false;
             }
+        }
+        
+        private void OnDrawGizmos()
+        {
+            var colliderBounds = GetComponent<Collider>().bounds;
+            var position = colliderBounds.center;
+            position.y -= colliderBounds.extents.y;
+            Gizmos.DrawWireSphere(position, 0.1f);
+            
+            RaycastHit hit;
+            if (Physics.Raycast(position, Vector3.down, out hit))
+            {
+                Gizmos.color = Color.red;
+                Gizmos.DrawSphere(hit.point, 0.5f);
+                Gizmos.color = Color.blue;
+                Gizmos.DrawLine(position, hit.point);
+            }
+            Gizmos.DrawLine(position, new Vector3(position.x, maxYPosition, position.z));
+            
+            Gizmos.color = Color.green;
+            // Draw sphere at the transform's position
+            Gizmos.DrawSphere(transform.position, 0.5f);
+            
         }
     }
 }

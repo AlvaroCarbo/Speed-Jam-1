@@ -95,7 +95,7 @@ public class LightController : MonoBehaviour
             Debug.Log("Lerping to start rotation");
             transform.rotation = Quaternion.Lerp(transform.rotation, startRotation, Time.deltaTime * rotationSpeed);    
             yield return null;
-            if (isPlayerInLight)
+            if (isPlayerInLight || transform.rotation == startRotation)
             {
                 yield break;
             }

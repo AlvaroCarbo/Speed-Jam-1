@@ -9,6 +9,7 @@ namespace Damage
         public override int DoDamage()
         {
             Debug.Log("Squash Damage" + damage);
+            GetComponent<SquashHelper>().SetTriggerToSquash();
             return damage;
         }
 

@@ -7,7 +7,6 @@ namespace Damage
     {
         private void OnTriggerEnter(Collider other)
         {
-            Debug.Log("Triggered");
-        }
+            Debug.Log("Triggered"); }
     }
 }
