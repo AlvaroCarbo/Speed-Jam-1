@@ -61,4 +61,9 @@ public class InteractionLogic : MonoBehaviour, IInteractonLogic
         foreach (Transform child in target.transform)
             child.gameObject.layer = layer;
     }
+
+    public void RemoveSelected()
+    {
+        selected = null;
+    }
 }
