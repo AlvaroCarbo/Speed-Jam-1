@@ -43,6 +43,7 @@ public class Movement3D : MonoBehaviour, IMovement3D
     void OnEnable()
     {
         input.enabled = true;
+        LockCursor();
     }
 
     private void OnDisable()
@@ -60,6 +61,8 @@ public class Movement3D : MonoBehaviour, IMovement3D
 
         input.actions["Sprint"].started += _ => moveSpeed = sprintSpeed;
         input.actions["Sprint"].canceled += _ => moveSpeed = regularSpeed;
+        
+        LockCursor();
     }
 
     void Update()
@@ -146,5 +149,10 @@ public class Movement3D : MonoBehaviour, IMovement3D
     private void OnCollisionEnter(Collision other)
     {
         Debug.Log(other.gameObject.name);
+    }
+    
+    private void LockCursor()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }
