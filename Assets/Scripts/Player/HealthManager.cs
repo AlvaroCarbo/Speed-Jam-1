@@ -2,6 +2,7 @@
 using System.Collections;
 using Damage.Base;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Player
 {
@@ -50,6 +51,16 @@ namespace Player
         private void Die()
         {
             _animationManager.SetIsAlive(health > 0);
+            
+            _movement3D.EnableMovement(false);
+            
+            StartCoroutine(RestartLevel());
+        }
+
+        private IEnumerator RestartLevel()
+        {
+            yield return new WaitForSeconds(2f);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
         private void OnTriggerEnter(Collider other)
