@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class LevelManager : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private bool escape = false;
     
     [SerializeField] private ScoreController scoreController;
+    [SerializeField] private PlayerInput input;
 
     // Getters
     public bool GetButtonPressed()
@@ -64,9 +66,9 @@ public class LevelManager : MonoBehaviour
     public void Escape()
     {
         escape = true;
-        
+
         // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        
+        input.enabled = false;
         scoreController.EnableScorePanel();
     }
 }
