@@ -27,6 +27,7 @@ namespace Api
     
         public void StartPostRequest(string itemName, string score)
         {
+            score = score.Replace(",", ".");
             StartCoroutine(PostRequest(Uri, itemName, score));
         }
     
@@ -164,12 +165,12 @@ namespace Api
         private void JsonStringToObjectList(string jsonString)
         {
             _leaderboardEntries = JsonConvert.DeserializeObject<List<LeaderboardEntry>>(jsonString);
-        
-            foreach (var entry in _leaderboardEntries)
+
+            foreach (var t in _leaderboardEntries)
             {
-                Debug.Log(entry.Id + " " + entry.Name + " " + entry.Score);
+                t.Score = t.Score.Replace(",", ".");
             }
-            
+
             // Sort the list by score parsing it to int
             try
             {

@@ -1,10 +1,7 @@
-using System;
 using System.Collections;
 using Api;
 using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.SceneManagement;
 using Button = UnityEngine.UI.Button;
 
