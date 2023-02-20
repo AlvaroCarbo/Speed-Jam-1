@@ -12,9 +12,8 @@ namespace UI.GridLayout
         
         public void SetCellText(LeaderboardEntry leaderboardEntry, int i)
         {
-            // idText.text = leaderboardEntry.Id;
             idText.text = i + ".";
-            nameText.text = leaderboardEntry.Name;
+            nameText.text = leaderboardEntry.Name.Length > 9 ? leaderboardEntry.Name[..9] : leaderboardEntry.Name;
             scoreText.text = leaderboardEntry.Score;
         }
     }

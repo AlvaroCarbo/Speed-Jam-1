@@ -173,7 +173,8 @@ namespace Api
             // Sort the list by score parsing it to int
             try
             {
-                _leaderboardEntries.Sort((x, y) => int.Parse(y.Score).CompareTo(int.Parse(x.Score)));
+                // _leaderboardEntries.Sort((x, y) => int.Parse(y.Score).CompareTo(int.Parse(x.Score)));
+                _leaderboardEntries.Sort((x, y) => FormatStringToTime(x.Score).CompareTo(FormatStringToTime(y.Score)));
             }
             catch (Exception e)
             {
@@ -188,6 +189,15 @@ namespace Api
             var leaderboardEntry = JsonConvert.DeserializeObject<LeaderboardEntry>(jsonString);
             
             FindObjectOfType<GridController>().SetGridCells(new List<LeaderboardEntry> {leaderboardEntry});
+        }
+
+        private float FormatStringToTime(string value)
+        {
+            string[] time = value.Split(':');
+            float minutes = float.Parse(time[0]);
+            float seconds = float.Parse(time[1]);
+            float timer = minutes * 60 + seconds;
+            return timer;
         }
     }
 }

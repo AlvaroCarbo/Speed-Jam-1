@@ -22,6 +22,8 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private bool vaultOpen = false;
     [SerializeField] private bool pizzaDelivered = false;
     [SerializeField] private bool escape = false;
+    
+    [SerializeField] private ScoreController scoreController;
 
     // Getters
     public bool GetButtonPressed()
@@ -63,6 +65,8 @@ public class LevelManager : MonoBehaviour
     {
         escape = true;
         
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        
+        scoreController.EnableScorePanel();
     }
 }
