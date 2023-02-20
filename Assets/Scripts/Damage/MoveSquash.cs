@@ -1,4 +1,3 @@
-using UnityEditor.U2D.Path;
 using UnityEngine;
 
 namespace Damage
