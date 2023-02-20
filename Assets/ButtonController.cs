@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ButtonController : MonoBehaviour, IInteractable
 {
@@ -7,20 +8,12 @@ public class ButtonController : MonoBehaviour, IInteractable
     private bool _isPressed;
     
     [SerializeField] private DoorControl doorControl;
-
-    // private void OnTriggerEnter(Collider other)
-    // {
-    //     if (_isPressed) return;
-    //     
-    //     // var interact = other.GetComponent<InteractionLogic>();
-    //     // Debug.Log(interact.isInteracting);
-    //     
-    //     // if (!interact.isInteracting) return;
-    //
-    //     _isPressed = true;
-    //     PressButton();
-    // }
     
+    [SerializeField] private UnityEvent evento;
+
+    [SerializeField] private UnityEvent onSelect;
+    [SerializeField] private UnityEvent onDeselect;
+
     private void PressButton()
     {
         AudioManager.Instance.PlaySound(buttonPressSound);
@@ -44,20 +37,20 @@ public class ButtonController : MonoBehaviour, IInteractable
 
     public void OnSelect()
     {
-        // throw new System.NotImplementedException();
+        onSelect.Invoke();
     }
 
     public void OnDeselect()
     {
-        // throw new System.NotImplementedException();
+        onDeselect.Invoke();
     }
 
     public void OnInteract()
     {
         if (_isPressed) return;
-        
         _isPressed = true;
         
         PressButton();
+        evento.Invoke();
     }
 }

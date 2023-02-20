@@ -9,7 +9,8 @@ namespace Player
     {
         [SerializeField] private int health = 5;
         
-        
+        public int currentHealth => health;
+
         private AnimationManager _animationManager;
         private Movement3D _movement3D;
 
