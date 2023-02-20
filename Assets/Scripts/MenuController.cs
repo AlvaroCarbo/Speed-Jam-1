@@ -7,11 +7,7 @@ public class MenuController : MonoBehaviour
 {
     public void PlayLoader()
     {
-        SceneManager.LoadScene("Test 1", LoadSceneMode.Single);
-    }
-    public void MenuLoader()
-    {
-        SceneManager.LoadScene("Menu", LoadSceneMode.Single);
+        SceneManager.LoadScene("Test", LoadSceneMode.Single);
     }
     public void ScoreBoardLoader()
     {
