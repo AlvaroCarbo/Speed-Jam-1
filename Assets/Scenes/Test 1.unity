@@ -1511,7 +1511,7 @@ PrefabInstance:
     - target: {fileID: 1027562236866784116, guid: 807c2087fee06c442adfb6e507787e2a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.037
+      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 1027562236866784116, guid: 807c2087fee06c442adfb6e507787e2a,
         type: 3}
@@ -14602,7 +14602,7 @@ PrefabInstance:
     - target: {fileID: 1027562236866784116, guid: 807c2087fee06c442adfb6e507787e2a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.75
+      value: -1.24
       objectReference: {fileID: 0}
     - target: {fileID: 1027562236866784116, guid: 807c2087fee06c442adfb6e507787e2a,
         type: 3}
@@ -18885,7 +18885,7 @@ PrefabInstance:
     - target: {fileID: 1027562236866784116, guid: 807c2087fee06c442adfb6e507787e2a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.006
+      value: 1.167
       objectReference: {fileID: 0}
     - target: {fileID: 1027562236866784116, guid: 807c2087fee06c442adfb6e507787e2a,
         type: 3}
@@ -22507,7 +22507,7 @@ PrefabInstance:
     - target: {fileID: 1027562236866784116, guid: 807c2087fee06c442adfb6e507787e2a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.04
+      value: 1.144
       objectReference: {fileID: 0}
     - target: {fileID: 1027562236866784116, guid: 807c2087fee06c442adfb6e507787e2a,
         type: 3}
@@ -29960,32 +29960,32 @@ PrefabInstance:
     - target: {fileID: 9053911570328416547, guid: 6624140b802773b43b766418a67a23d0,
         type: 3}
       propertyPath: m_FollowOffset.y
-      value: 2.144276
+      value: 0.2088666
       objectReference: {fileID: 0}
     - target: {fileID: 9053911570328416547, guid: 6624140b802773b43b766418a67a23d0,
         type: 3}
       propertyPath: m_FollowOffset.z
-      value: -7.896131
+      value: -4.043668
       objectReference: {fileID: 0}
     - target: {fileID: 9053911570649139303, guid: 6624140b802773b43b766418a67a23d0,
         type: 3}
       propertyPath: m_FollowOffset.y
-      value: 2.144276
+      value: 0.2088666
       objectReference: {fileID: 0}
     - target: {fileID: 9053911570649139303, guid: 6624140b802773b43b766418a67a23d0,
         type: 3}
       propertyPath: m_FollowOffset.z
-      value: -7.896131
+      value: -4.043668
       objectReference: {fileID: 0}
     - target: {fileID: 9053911570864971658, guid: 6624140b802773b43b766418a67a23d0,
         type: 3}
       propertyPath: m_FollowOffset.y
-      value: 2.144276
+      value: 0.2088666
       objectReference: {fileID: 0}
     - target: {fileID: 9053911570864971658, guid: 6624140b802773b43b766418a67a23d0,
         type: 3}
       propertyPath: m_FollowOffset.z
-      value: -7.896131
+      value: -4.043668
       objectReference: {fileID: 0}
     - target: {fileID: 9053911571151862015, guid: 6624140b802773b43b766418a67a23d0,
         type: 3}
@@ -30080,12 +30080,12 @@ PrefabInstance:
     - target: {fileID: 9053911571627480578, guid: 6624140b802773b43b766418a67a23d0,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.115430884
+      value: 0.11543085
       objectReference: {fileID: 0}
     - target: {fileID: 9053911571627480578, guid: 6624140b802773b43b766418a67a23d0,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.006510385
+      value: -0.0065103825
       objectReference: {fileID: 0}
     - target: {fileID: 9053911572311505878, guid: 6624140b802773b43b766418a67a23d0,
         type: 3}
@@ -30435,7 +30435,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '[R] To restart '
+  m_text: '''R'' To restart '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6cc7dd85ff753d745a477221299bb7bb, type: 2}
   m_sharedMaterial: {fileID: 8333046930941031691, guid: 6cc7dd85ff753d745a477221299bb7bb,
@@ -34445,6 +34445,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
