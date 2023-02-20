@@ -144,7 +144,7 @@ MonoBehaviour:
   outlineSettings:
     outlineColor: {r: 0, g: 0, b: 0, a: 1}
     outlineScale: 1
-    depthThreshold: 1.5
+    depthThreshold: 4.7
     robertsCrossMultiplier: 100
     normalThreshold: 1
     steepAngleThreshold: 0.2
