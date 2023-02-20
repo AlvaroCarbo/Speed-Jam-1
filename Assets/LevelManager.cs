@@ -8,9 +8,6 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private bool vaultOpen = false;
     [SerializeField] private bool pizzaDelivered = false;
     [SerializeField] private bool escape = false;
-    
-    [SerializeField] private List<bool> levelMainProgress = new List<bool>();
-    [SerializeField] private List<bool> levelSideProgress = new List<bool>();
 
     // Getters
     public bool GetButtonPressed()
