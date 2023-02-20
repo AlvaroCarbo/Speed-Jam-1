@@ -66,7 +66,20 @@ public class LightController : MonoBehaviour
 
             if (timeInLight >= limitTimeToStayInLight)
             {
-                Debug.Log("Player is dead");
+                RaycastHit hit;
+                
+                
+                if (Physics.Raycast(transform.position, transform.forward, out hit, 100f, ~LayerMask.GetMask("Ignore Raycast")))
+                {
+                    Debug.Log($"Raycast hit {hit.collider.name}");
+                    Debug.DrawRay(transform.position, transform.forward * 100f, Color.red, 5f);
+                    if (hit.collider.CompareTag("Player"))
+                    {
+                        Debug.Log("Player is dead");
+                        DetectedController.Instance.OnDetected();
+
+                    }
+                }
             }
         }
     }
