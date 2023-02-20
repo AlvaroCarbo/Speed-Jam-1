@@ -195,9 +195,11 @@ namespace Api
         private float FormatStringToTime(string value)
         {
             string[] time = value.Split(':');
+            time[1] = time[1].Replace(".", ",");
             float minutes = float.Parse(time[0]);
             float seconds = float.Parse(time[1]);
-            float timer = minutes * 60 + seconds;
+            float timer = (minutes * 60) + seconds;
+            Debug.Log(value + " = " + timer + " seconds:" +seconds + " minutes:" + minutes);
             return timer;
         }
     }
