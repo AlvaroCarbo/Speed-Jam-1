@@ -5,6 +5,8 @@ public class ButtonController : MonoBehaviour, IInteractable
     [SerializeField] private AudioClip buttonPressSound;
     
     private bool _isPressed;
+    
+    [SerializeField] private DoorControl doorControl;
 
     // private void OnTriggerEnter(Collider other)
     // {
@@ -26,11 +28,18 @@ public class ButtonController : MonoBehaviour, IInteractable
         MusicManager.Instance.StopMusic();
 
         Invoke(nameof(PlayRunningMusic), 1f);
+        
+        Invoke(nameof(OpenDoor), 1f);
     }
 
     private void PlayRunningMusic()
     {
         MusicManager.Instance.PlayRunningMusic();
+    }
+    
+    private void OpenDoor()
+    {
+        doorControl.OpenDoor();
     }
 
     public void OnSelect()
@@ -47,12 +56,8 @@ public class ButtonController : MonoBehaviour, IInteractable
     {
         if (_isPressed) return;
         
-        // var interact = other.GetComponent<InteractionLogic>();
-        // Debug.Log(interact.isInteracting);
-        
-        // if (!interact.isInteracting) return;
-
         _isPressed = true;
+        
         PressButton();
     }
 }
