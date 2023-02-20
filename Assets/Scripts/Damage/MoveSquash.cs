@@ -16,9 +16,11 @@ namespace Damage
         
         [Header("Audio")]
         [SerializeField] private AudioClip _groundCollisionSFX;
+        AudioSource _ownAudioSource;
         
         private void Start()
         {
+            _ownAudioSource = GetComponent<AudioSource>();
             maxYPosition = transform.position.y;
         }
 
@@ -51,7 +53,7 @@ namespace Damage
                 position.y -= colliderBounds.extents.y;
                 
                 ParticlesManager.Instance.SpawnParticles(_groundCollisionFX, position, Quaternion.identity, 1, scale);
-                AudioSource.PlayClipAtPoint(_groundCollisionSFX, position);
+                _ownAudioSource.PlayOneShot(_groundCollisionSFX);
                 _goingDown = false;
             }
         }

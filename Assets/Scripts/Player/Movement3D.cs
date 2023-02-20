@@ -61,6 +61,8 @@ public class Movement3D : MonoBehaviour, IMovement3D
 
         input.actions["Sprint"].started += _ => moveSpeed = sprintSpeed;
         input.actions["Sprint"].canceled += _ => moveSpeed = regularSpeed;
+
+        input.actions["Reset"].started += _ => SceneController.ReloadScene();
         
         LockCursor();
     }
