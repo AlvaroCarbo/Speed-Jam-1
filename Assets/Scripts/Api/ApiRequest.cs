@@ -44,6 +44,16 @@ namespace Api
         private IEnumerator GetRequest(string uri)
         {
             using UnityWebRequest webRequest = UnityWebRequest.Get(uri);
+            // Set Access-Control headers
+            // "Access-Control-Allow-Credentials": "true",
+            webRequest.SetRequestHeader("Access-Control-Allow-Credentials", "true");
+            // "Access-Control-Allow-Headers": "Accept, X-Access-Token, X-Application-Name, X-Request-Sent-Time",
+            webRequest.SetRequestHeader("Access-Control-Allow-Headers", "Accept, X-Access-Token, X-Application-Name, X-Request-Sent-Time");
+            // "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+            webRequest.SetRequestHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+            // "Access-Control-Allow-Origin": "*",
+            webRequest.SetRequestHeader("Access-Control-Allow-Origin", "*");
+
             // Request and wait for the desired page.
             yield return webRequest.SendWebRequest();
 
@@ -102,6 +112,16 @@ namespace Api
             UnityWebRequest webRequest = new UnityWebRequest(uri, "POST");
             webRequest.SetRequestHeader("Content-Type", "application/json");
             webRequest.SetRequestHeader("Accept", "application/json");
+            
+            // "Access-Control-Allow-Credentials": "true",
+            webRequest.SetRequestHeader("Access-Control-Allow-Credentials", "true");
+            // "Access-Control-Allow-Headers": "Accept, X-Access-Token, X-Application-Name, X-Request-Sent-Time",
+            webRequest.SetRequestHeader("Access-Control-Allow-Headers", "Accept, X-Access-Token, X-Application-Name, X-Request-Sent-Time");
+            // "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+            webRequest.SetRequestHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+            // "Access-Control-Allow-Origin": "*",
+            webRequest.SetRequestHeader("Access-Control-Allow-Origin", "*");
+            
             webRequest.uploadHandler = new UploadHandlerRaw(System.Text.Encoding.UTF8.GetBytes(json));
             webRequest.downloadHandler = new DownloadHandlerBuffer();
             // Request and wait for the desired page.
